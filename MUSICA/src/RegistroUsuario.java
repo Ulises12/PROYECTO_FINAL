@@ -1,3 +1,8 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,7 +37,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        pass_text = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -56,6 +61,12 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 153));
         jLabel5.setText("Contraseña: ");
+
+        pass_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pass_textActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +101,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(pass_text, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                                     .addComponent(jTextField1)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
@@ -129,7 +140,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pass_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addGap(103, 103, 103)
@@ -156,10 +167,34 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          
-        Principal newFrame = new Principal ();
+        try{
+            
+                Connection con = Conection.getConexion();
+                String query = "INSERT INTO Usuario(Nombre,contraseña,tipo_usuario) VALUES (?,?,?)";
+                
+                PreparedStatement psmt = con.prepareStatement(query);
+                psmt.setString(1, jTextField1.getText());
+                psmt.setString(2, pass_text.getText());
+                psmt.setString(3, "usuario");
+                
+                
+                psmt.execute();
+                System.out.println("sql success");
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        
+            InicioSesion newFrame = new InicioSesion();
             newFrame.setVisible(true);
             this.dispose();
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pass_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pass_textActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +241,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField pass_text;
     // End of variables declaration//GEN-END:variables
 }
