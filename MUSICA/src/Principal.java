@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -37,9 +43,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        text_buscar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        buscar_bot = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -145,7 +151,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setText("Filtrar busqueda: ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 130, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Género", "Canción", "Artista" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Genero", "Cancion", "Artista" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -157,7 +163,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
         jLabel4.setText("Buscar:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, 14));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 130, -1));
+        getContentPane().add(text_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));
@@ -166,13 +172,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 270, 40));
 
-        jButton7.setText("Buscar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        buscar_bot.setText("Buscar");
+        buscar_bot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                buscar_botActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+        getContentPane().add(buscar_bot, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
 
         jButton8.setText("Salir");
         jButton8.setAlignmentX(10.0F);
@@ -453,13 +459,19 @@ public class Principal extends javax.swing.JFrame {
             this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void buscar_botActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_botActionPerformed
         // TODO add your handling code here:
+         String combo = jComboBox1.getActionCommand();
+         String palabraBusqueda = text_buscar.getText();
+         
+         
          
         Buscar newFrame = new Buscar ();
             newFrame.setVisible(true);
             this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+        Buscar.palabraBusqueda = palabraBusqueda;
+        Buscar.tipoBusqueda = combo;
+    }//GEN-LAST:event_buscar_botActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,6 +509,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar_bot;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -512,7 +525,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
@@ -523,7 +535,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField text_buscar;
     private javax.swing.JLabel text_c1;
     private javax.swing.JLabel text_c2;
     private javax.swing.JLabel text_c3;
