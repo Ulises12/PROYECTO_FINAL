@@ -156,28 +156,28 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\agregar.png"/>
+          <Image iconType="3" name="/agregar.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\actualiza.png"/>
+          <Image iconType="3" name="/actualiza.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\eliminar.png"/>
+          <Image iconType="3" name="/eliminar.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\lentes.png"/>
+          <Image iconType="3" name="/lentes.png"/>
         </Property>
       </Properties>
     </Component>

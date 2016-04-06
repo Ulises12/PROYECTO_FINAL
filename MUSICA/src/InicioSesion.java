@@ -50,7 +50,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 102, 153));
         jLabel3.setText("Usuario:");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\ideal.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ideal.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 153));

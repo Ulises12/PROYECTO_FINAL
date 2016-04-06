@@ -76,13 +76,13 @@ public class PaginaAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\agregar.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/agregar.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\actualiza.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/actualiza.png"))); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\eliminar.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eliminar.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\lentes.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lentes.png"))); // NOI18N
 
         jButton5.setText("Salir");
         jButton5.addActionListener(new java.awt.event.ActionListener() {

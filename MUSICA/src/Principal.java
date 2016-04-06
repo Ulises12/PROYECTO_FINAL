@@ -58,26 +58,32 @@ public class Principal extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(700, 650));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coldplay_masmaspequeña.jpg"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setIconTextGap(5);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/coldplay_maspequeña.jpg"))); // NOI18N
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\coldplay_pequeña.jpg")); // NOI18N
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 144, 129));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 150, 140));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jButton2.setIconTextGap(5);
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Maspequeña.jpg"))); // NOI18N
+        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_pequeña.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -85,33 +91,44 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 152, 134));
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Jayz_masmaspequeña.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Jayz_maspequeña.png"))); // NOI18N
+        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Jayz_pequeña.png"))); // NOI18N
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 143, 132));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Macklemore_masmaspequeña.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Macklemore_maspequeña.png"))); // NOI18N
+        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Macklemore_pequeña.png"))); // NOI18N
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 154, 134));
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_masmasDragonsPequeña.jpg"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_MasDragonsPequeña.jpg"))); // NOI18N
+        jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 150, 140));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\Imagine_masmasDragonsPequeña.jpg")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_masmaspequeña.jpg"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 142, 130));
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_maspequeña.jpg"))); // NOI18N
+        jButton6.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_pequeña.jpg"))); // NOI18N
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 150, 130));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 153));
@@ -158,10 +175,13 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 70, 20));
 
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton10.setBorder(null);
         jButton10.setBorderPainted(false);
         jButton10.setContentAreaFilled(false);
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        jButton10.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -169,10 +189,13 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 40, 30));
 
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton9.setBorder(null);
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/like_maspequeña.png"))); // NOI18N
+        jButton9.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/like.png"))); // NOI18N
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -180,43 +203,55 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 50, 40));
 
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton11.setBorder(null);
         jButton11.setBorderPainted(false);
         jButton11.setContentAreaFilled(false);
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton11.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        jButton11.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, 40, 30));
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, 50, 40));
 
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton12.setBorder(null);
         jButton12.setBorderPainted(false);
         jButton12.setContentAreaFilled(false);
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton12.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/like_maspequeña.png"))); // NOI18N
+        jButton12.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/like.png"))); // NOI18N
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 50, 40));
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 50, 40));
 
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton13.setBorder(null);
         jButton13.setBorderPainted(false);
         jButton13.setContentAreaFilled(false);
         jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton13.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/like_maspequeña.png"))); // NOI18N
+        jButton13.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/like.png"))); // NOI18N
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 50, 40));
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 60, 50));
 
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton14.setBorder(null);
         jButton14.setBorderPainted(false);
         jButton14.setContentAreaFilled(false);
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton14.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        jButton14.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -224,43 +259,55 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 40, 30));
 
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton15.setBorder(null);
         jButton15.setBorderPainted(false);
         jButton15.setContentAreaFilled(false);
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton15.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        jButton15.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 40, 30));
+        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 40, 30));
 
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton16.setBorder(null);
         jButton16.setBorderPainted(false);
         jButton16.setContentAreaFilled(false);
         jButton16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton16.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        jButton16.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 40, 30));
+        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 40, 40));
 
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton17.setBorder(null);
         jButton17.setBorderPainted(false);
         jButton17.setContentAreaFilled(false);
         jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton17.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        jButton17.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 550, 40, 30));
+        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 550, 50, 40));
 
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton18.setBorder(null);
         jButton18.setBorderPainted(false);
         jButton18.setContentAreaFilled(false);
         jButton18.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton18.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/like_maspequeña.png"))); // NOI18N
+        jButton18.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/like.png"))); // NOI18N
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -268,27 +315,33 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 50, 40));
 
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton19.setBorder(null);
         jButton19.setBorderPainted(false);
         jButton19.setContentAreaFilled(false);
         jButton19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton19.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/like_maspequeña.png"))); // NOI18N
+        jButton19.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/like.png"))); // NOI18N
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 50, 40));
+        getContentPane().add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 550, 50, 40));
 
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton20.setBorder(null);
         jButton20.setBorderPainted(false);
         jButton20.setContentAreaFilled(false);
         jButton20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton20.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/like_maspequeña.png"))); // NOI18N
+        jButton20.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/like.png"))); // NOI18N
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 50, 40));
+        getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 50, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
