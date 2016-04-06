@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +19,14 @@ public class InicioSesion extends javax.swing.JFrame {
     /**
      * Creates new form InicioSesion
      */
+    
+    public String claveTemp;
+    public String usuarioTemp;
+    
+    boolean correctPass;
+    boolean accessGranted;
+    public String nombreUsuario;
+    
     public InicioSesion() {
         initComponents();
     }
@@ -31,11 +45,11 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        text_usuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        text_pass = new javax.swing.JPasswordField();
 
         jLabel2.setText("Inicio: ");
 
@@ -56,9 +70,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 102, 153));
         jLabel5.setText("Contraseña: ");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        text_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                text_usuarioActionPerformed(evt);
             }
         });
 
@@ -79,6 +93,8 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
 
+        text_pass.setText("jPasswordField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,22 +103,18 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel3))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(108, 108, 108)
-                                    .addComponent(jButton1)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(text_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
@@ -110,6 +122,14 @@ public class InicioSesion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(jButton2)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,11 +140,11 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
@@ -137,17 +157,86 @@ public class InicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void text_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_text_usuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        usuarioTemp = text_usuario.getText();
+        claveTemp = text_pass.getText();
         
-            Principal newFrame = new Principal ();
-            newFrame.setVisible(true);
-            this.dispose();
+        int idUsuario = 0;
+        try{
+            
+                
+                Connection con = Conection.getConexion();
+                String query = "SELECT contraseña, idUsuario FROM Usuario where contraseña='"+claveTemp+"' ";
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+                
+                
+                
+                if(rs.next())
+                {
+                    
+                    String val = rs.getString("contraseña");
+                    int val2 = rs.getInt("idUsuario");
+                    idUsuario = val2;
+                    if(val.equals(claveTemp))
+                    {
+                        correctPass = true;
+                    }
+                }
+                
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            correctPass = false;
+        }
+        
+        try{
+            
+                
+                Connection con = Conection.getConexion();
+                String query = "SELECT Nombre FROM Usuario where idUsuario='"+idUsuario+"' ";
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+                
+                
+                
+                if(rs.next())
+                {
+                    
+                    String val = rs.getString("Nombre");
+                    if(val.equals(usuarioTemp))
+                    {
+                        if(correctPass) {
+                            accessGranted = true;
+                        }
+                        nombreUsuario = val;
+                    }
+                    if(val.equals(claveTemp))
+                    {
+                        correctPass = true;
+                    }
+                }
+                
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            correctPass = false;
+            accessGranted = false;
+        }
+        
+            if(accessGranted)
+            {
+                Principal newFrame = new Principal ();
+                newFrame.setVisible(true);
+                this.dispose();
+                Principal.tuNombre.setText(nombreUsuario);
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -203,7 +292,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField text_pass;
+    private javax.swing.JTextField text_usuario;
     // End of variables declaration//GEN-END:variables
 }

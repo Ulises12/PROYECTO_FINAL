@@ -13,6 +13,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    public String usuarioNombre ="";
     public Principal() {
         initComponents();
     }
@@ -31,7 +33,7 @@ public class Principal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        text_c6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
@@ -47,10 +49,19 @@ public class Principal extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        text_c5 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
+        tuNombre = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        text_c1 = new javax.swing.JLabel();
+        text_c2 = new javax.swing.JLabel();
+        text_c3 = new javax.swing.JLabel();
+        text_c4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(0, 153, 153));
@@ -66,7 +77,6 @@ public class Principal extends javax.swing.JFrame {
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setIconTextGap(5);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/coldplay_maspequeña.jpg"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\coldplay_pequeña.jpg")); // NOI18N
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,15 +130,15 @@ public class Principal extends javax.swing.JFrame {
         jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 150, 140));
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_masmaspequeña.jpg"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_maspequeña.jpg"))); // NOI18N
-        jButton6.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_pequeña.jpg"))); // NOI18N
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 150, 130));
+        text_c6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_masmaspequeña.jpg"))); // NOI18N
+        text_c6.setBorder(null);
+        text_c6.setBorderPainted(false);
+        text_c6.setContentAreaFilled(false);
+        text_c6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        text_c6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        text_c6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_maspequeña.jpg"))); // NOI18N
+        text_c6.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Komander_pequeña.jpg"))); // NOI18N
+        getContentPane().add(text_c6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 150, 130));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 153));
@@ -187,7 +197,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 40, 30));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 40, 30));
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton9.setBorder(null);
@@ -201,7 +211,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 50, 40));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 50, 40));
 
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton11.setBorder(null);
@@ -229,7 +239,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 50, 40));
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 50, 40));
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton13.setBorder(null);
@@ -257,7 +267,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 40, 30));
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 40, 30));
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton15.setBorder(null);
@@ -271,7 +281,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton15ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 40, 30));
+        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 40, 30));
 
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
         jButton16.setBorder(null);
@@ -287,19 +297,19 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 40, 40));
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
-        jButton17.setBorder(null);
-        jButton17.setBorderPainted(false);
-        jButton17.setContentAreaFilled(false);
-        jButton17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton17.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
-        jButton17.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        text_c5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_masmaspequeño.png"))); // NOI18N
+        text_c5.setBorder(null);
+        text_c5.setBorderPainted(false);
+        text_c5.setContentAreaFilled(false);
+        text_c5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        text_c5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike_maspequeño.png"))); // NOI18N
+        text_c5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/dislike.png"))); // NOI18N
+        text_c5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                text_c5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 550, 50, 40));
+        getContentPane().add(text_c5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 550, 50, 40));
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton18.setBorder(null);
@@ -313,7 +323,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton18ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 50, 40));
+        getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 50, 40));
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like_masmaspequeña.png"))); // NOI18N
         jButton19.setBorder(null);
@@ -342,6 +352,33 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 50, 40));
+
+        tuNombre.setText("Bienvenido:");
+        getContentPane().add(tuNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jLabel3.setText("Recomendaciones");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jLabel5.setText("Mejor calificados");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
+
+        text_c1.setText("text_c1");
+        getContentPane().add(text_c1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
+
+        text_c2.setText("text_c2");
+        getContentPane().add(text_c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
+
+        text_c3.setText("text_c3");
+        getContentPane().add(text_c3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, -1, -1));
+
+        text_c4.setText("jLabel6");
+        getContentPane().add(text_c4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
+
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, -1, -1));
+
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -390,9 +427,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void text_c5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_c5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }//GEN-LAST:event_text_c5ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
@@ -468,7 +505,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
@@ -476,14 +512,24 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel text_c1;
+    private javax.swing.JLabel text_c2;
+    private javax.swing.JLabel text_c3;
+    private javax.swing.JLabel text_c4;
+    private javax.swing.JButton text_c5;
+    private javax.swing.JButton text_c6;
+    public static javax.swing.JLabel tuNombre;
     // End of variables declaration//GEN-END:variables
 }
