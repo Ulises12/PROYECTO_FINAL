@@ -105,6 +105,7 @@ public class Principal extends javax.swing.JFrame {
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 150, 140));
 
+        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\Imagine_masmasDragonsPequeña.jpg")); // NOI18N
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);

@@ -76,13 +76,13 @@ public class PaginaAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Desktop\\Universidad\\Cuarto_Semestre\\BasesDeDatos\\Proyecto_Final\\agregar.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\agregar.png")); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Desktop\\Universidad\\Cuarto_Semestre\\BasesDeDatos\\Proyecto_Final\\actualiza.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\actualiza.png")); // NOI18N
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Desktop\\Universidad\\Cuarto_Semestre\\BasesDeDatos\\Proyecto_Final\\eliminar.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\eliminar.png")); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Desktop\\Universidad\\Cuarto_Semestre\\BasesDeDatos\\Proyecto_Final\\lentes.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER1\\Documents\\GitHub\\PROYECTO_FINAL\\MUSICA\\build\\classes\\lentes.png")); // NOI18N
 
         jButton5.setText("Salir");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -98,9 +98,9 @@ public class PaginaAdmin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jButton2)
-                .addGap(74, 74, 74)
+                .addGap(72, 72, 72)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
@@ -108,7 +108,7 @@ public class PaginaAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(109, 109, 109)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()

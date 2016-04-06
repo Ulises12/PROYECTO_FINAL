@@ -26,9 +26,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
           </Group>
@@ -37,7 +37,7 @@
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="101" max="32767" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
           </Group>
@@ -156,28 +156,28 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Desktop\Universidad\Cuarto_Semestre\BasesDeDatos\Proyecto_Final\agregar.png"/>
+          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\agregar.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Desktop\Universidad\Cuarto_Semestre\BasesDeDatos\Proyecto_Final\actualiza.png"/>
+          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\actualiza.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Desktop\Universidad\Cuarto_Semestre\BasesDeDatos\Proyecto_Final\eliminar.png"/>
+          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\eliminar.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\USER1\Desktop\Universidad\Cuarto_Semestre\BasesDeDatos\Proyecto_Final\lentes.png"/>
+          <Image iconType="2" name="C:\Users\USER1\Documents\GitHub\PROYECTO_FINAL\MUSICA\build\classes\lentes.png"/>
         </Property>
       </Properties>
     </Component>
