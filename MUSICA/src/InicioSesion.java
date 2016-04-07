@@ -23,6 +23,7 @@ public class InicioSesion extends javax.swing.JFrame {
     public String claveTemp;
     public String usuarioTemp;
     
+    public boolean isAdmin;
     boolean correctPass;
     boolean accessGranted;
     public String nombreUsuario;
@@ -93,8 +94,6 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
 
-        text_pass.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,9 +108,9 @@ public class InicioSesion extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(text_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(text_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(text_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                    .addComponent(text_pass)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(108, 108, 108)
                                 .addComponent(jButton1)))
@@ -172,7 +171,7 @@ public class InicioSesion extends javax.swing.JFrame {
             
                 
                 Connection con = Conection.getConexion();
-                String query = "SELECT contraseña, idUsuario FROM Usuario where contraseña='"+claveTemp+"' ";
+                String query = "SELECT contraseña, idUsuario, tipo_usuario FROM Usuario where contraseña='"+claveTemp+"' ";
                 PreparedStatement psmt = con.prepareStatement(query);
                 ResultSet rs;
                 rs = psmt.executeQuery();
@@ -184,6 +183,17 @@ public class InicioSesion extends javax.swing.JFrame {
                     
                     String val = rs.getString("contraseña");
                     int val2 = rs.getInt("idUsuario");
+                    String val3 = rs.getString("tipo_usuario");
+                    
+                    if(val3.equals("Administrador"))
+                    {
+                        isAdmin = true;
+                    }
+                    else
+                    {
+                        isAdmin = false;
+                    }
+                    
                     idUsuario = val2;
                     if(val.equals(claveTemp))
                     {
@@ -232,10 +242,19 @@ public class InicioSesion extends javax.swing.JFrame {
         
             if(accessGranted)
             {
-                Principal newFrame = new Principal ();
-                newFrame.setVisible(true);
-                this.dispose();
-                Principal.tuNombre.setText(nombreUsuario);
+                if(!isAdmin)
+                {
+                    Principal newFrame = new Principal ();
+                    newFrame.setVisible(true);
+                    this.dispose();
+                    Principal.tuNombre.setText(nombreUsuario);
+                }
+                else
+                {
+                    PaginaAdmin newFrame = new PaginaAdmin();
+                    newFrame.setVisible(true);
+                    this.dispose();
+                }
             }
     }//GEN-LAST:event_jButton1ActionPerformed
 
