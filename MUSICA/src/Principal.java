@@ -461,8 +461,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void buscar_botActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_botActionPerformed
         // TODO add your handling code here:
-         String combo = jComboBox1.getActionCommand();
+         String combo =String.valueOf( jComboBox1.getSelectedItem());
          String palabraBusqueda = text_buscar.getText();
+         
          
          
          
@@ -471,6 +472,8 @@ public class Principal extends javax.swing.JFrame {
             this.dispose();
         Buscar.palabraBusqueda = palabraBusqueda;
         Buscar.tipoBusqueda = combo;
+        
+        Buscar.consultaBuscar();
     }//GEN-LAST:event_buscar_botActionPerformed
 
     /**
