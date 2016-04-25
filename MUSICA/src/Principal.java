@@ -464,13 +464,16 @@ public class Principal extends javax.swing.JFrame {
          String combo =String.valueOf( jComboBox1.getSelectedItem());
          String palabraBusqueda = text_buscar.getText();
          
+         
+         
+         
         Buscar newFrame = new Buscar ();
             newFrame.setVisible(true);
             this.dispose();
-            
         Buscar.palabraBusqueda = palabraBusqueda;
         Buscar.tipoBusqueda = combo;
-        Buscar.consultaBuscar(); 
+        
+        Buscar.consultaBuscar();
     }//GEN-LAST:event_buscar_botActionPerformed
 
     /**
