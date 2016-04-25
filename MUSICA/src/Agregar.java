@@ -14,12 +14,30 @@ import java.sql.SQLException;
  *
  * @author USER1
  */
+
+import javax.swing.*; import java.sql.*;
+//Read more at http://1bestcsharp.blogspot.com/2015/02/java-how-to-bind-jcombobox-with-mysql.html#qt3pJ1ZefMpRBGpm.99
 public class Agregar extends javax.swing.JFrame {
+
 
     /**
      * Creates new form Agregar
      */
+    //JComboBox jca = new JComboBox(); 
+    JPanel panel = new JPanel(); Connection con; Statement st; ResultSet rs; 
+    
     public Agregar() {
+        
+try{
+            
+                Connection con = Conection.getConexion();
+    st = con.createStatement(); String s = "select nombre from generocancion"; rs = st.executeQuery(s); 
+    while(rs.next()) { jca.addItem(rs.getString(1)); } }
+
+catch(Exception e){ JOptionPane.showMessageDialog(null, "ERROR 1"); }
+finally{ try{ st.close(); rs.close(); con.close(); }
+catch(Exception e){ /*JOptionPane.showMessageDialog(null, "ERROR CLOSE"); */} } panel.add(jca); this.getContentPane().add(panel); this.setVisible(true); 
+    
         initComponents();
     }
 
@@ -45,6 +63,7 @@ public class Agregar extends javax.swing.JFrame {
         genero_text = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jca = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,9 +75,21 @@ public class Agregar extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 102, 153));
         jLabel2.setText("Nombre de la nueva canción: ");
 
+        nombreCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreCancionActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 153));
         jLabel3.setText("Artista:");
+
+        artistaNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artistaNombreActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
@@ -77,6 +108,8 @@ public class Agregar extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,8 +130,10 @@ public class Agregar extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(artistaNombre)
-                                    .addComponent(genero_text))))
+                                    .addComponent(jca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(artistaNombre)
+                                        .addComponent(genero_text)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -134,7 +169,9 @@ public class Agregar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(25, 25, 25))
         );
@@ -155,7 +192,8 @@ public class Agregar extends javax.swing.JFrame {
         try{
             
                 Connection con = Conection.getConexion();
-                String query = "INSERT INTO Artista(Nombre) VALUES (?)";
+                String query = "INSERT INTO `canciones`.`artista` (`Nombre`) VALUES (?)";
+                //"INSERT INTO Artista(Nombre) VALUES (?)";
                 
                 PreparedStatement psmt = con.prepareStatement(query);
                 psmt.setString(1, artistaNombre.getText());
@@ -285,15 +323,26 @@ public class Agregar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void nombreCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCancionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreCancionActionPerformed
+
+    private void artistaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_artistaNombreActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -329,6 +378,13 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JComboBox jca;
     private javax.swing.JTextField nombreCancion;
     // End of variables declaration//GEN-END:variables
+    /*JComboBox jc = new JComboBox(); 
+    JPanel panel = new JPanel(); 
+    Connection con; 
+    Statement st; 
+    ResultSet rs; */
+   
 }
