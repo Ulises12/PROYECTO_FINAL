@@ -4,27 +4,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*; 
-
-
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 public class Buscar extends javax.swing.JFrame {
-
     /**
      * Creates new form Buscar
      */
     String cancion;
     String artista;
-    
-    
     public static String palabraBusqueda;
     public static String tipoBusqueda;
+    public static DefaultListModel <String> model= new DefaultListModel<>();
+    public static DefaultListModel <String> modelVacio= new DefaultListModel<>();
+    public static JList<String> list= new JList<>(model);
+    
     public Buscar() {
         initComponents();
-    }
-    
+    }   
     public static void consultaBuscar()
     {
         try{
-      
                 if(tipoBusqueda== "Genero") tipoBusqueda= "gc"; else if(tipoBusqueda=="Artista") tipoBusqueda= "a"; else if(tipoBusqueda=="Cancion") tipoBusqueda= "c";
                 
                 Connection con = Conection.getConexion();
@@ -33,24 +32,24 @@ public class Buscar extends javax.swing.JFrame {
                 ResultSet rs;
                 rs = psmt.executeQuery();
                 
-                
-                
-                if(rs.next())
+                ArrayList cancion= new ArrayList();
+                ArrayList artista= new ArrayList();
+                JList <String> VL= new JList<String> ();
+                VL.setModel(new DefaultListModel <String> ());
+                model.removeAllElements();
+                while(rs.next())
                 { 
-                    ArrayList cancion= new ArrayList();
-                    ArrayList artista= new ArrayList();
+                    
                     String val = rs.getString("a.nombre");
                     String val2 = rs.getString("c.nombre");
-                    System.out.println(val);
-                    System.out.println(val2);
-                    cancion.add(val2);
-                    artista.add(val);
-                  }
+                    model.addElement(val2); 
+                }
                 
         } catch (SQLException ex){
             System.out.println(ex.getMessage());
-            System.out.println("no");
-        }
+            System.out.println("No existen valores");
+        } 
+        VL.setModel(model);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,11 +60,17 @@ public class Buscar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        hola = new javax.swing.JList();
+        VL = new javax.swing.JList();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,7 +92,7 @@ public class Buscar extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane2.setViewportView(hola);
+        jScrollPane2.setViewportView(VL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,14 +103,12 @@ public class Buscar extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
@@ -114,15 +117,15 @@ public class Buscar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,6 +141,12 @@ public class Buscar extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         
+       Visualizar newFrame = new Visualizar ();
+            newFrame.setVisible(true);
+            this.dispose();
+        Visualizar.nombreCancion= VL.getSelectedValue().toString();
+        Visualizar.consultaVisualizar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -178,10 +187,12 @@ public class Buscar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList hola;
+    public static javax.swing.JList VL;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
