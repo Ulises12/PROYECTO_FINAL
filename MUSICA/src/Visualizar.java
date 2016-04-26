@@ -28,35 +28,46 @@ public static int idcancion, idgenero, idartista, idTGC;
     
     public static void consultaVisualizar ()
     {
-        String nombre="";
-         String calificacion="";
-         String link="";
-         String Genero="";
-         String tipo="";
-         String artista="";
+        String nombrei="";
+         String calificacioni="";
+         String linki="";
+         String Generoi="";
+         String tipoi="";
+         String artistai="";
+         int anioi=0;
+         String imgi="";
+         
          
          
      try{
               
            Connection con = Conection.getConexion();
-            String query = "SELECT c.Nombre as nombreCancion, c.Calificacion, c.link, gc.Nombre as nombreGenero, t.Nombre_tipo, a.Nombre as nombreArtista FROM cancion c JOIN generocancion gc ON c.fkidGeneroCancion = gc.idGeneroCancion JOIN tipogrupocanciones t ON c.fkidtipoGrupoCanciones = t.idtipoGrupoCanciones JOIN artista a ON a.idArtista = t.fkidArtista WHERE c.Nombre ='"+ nombreCancion + "'";
+            String query = "SELECT c.Nombre as nombreCancion, c.Calificacion, c.link, gc.Nombre as nombreGenero, t.Nombre_tipo, t.año, t.imagen, a.Nombre as nombreArtista FROM cancion c JOIN generocancion gc ON c.fkidGeneroCancion = gc.idGeneroCancion JOIN tipogrupocanciones t ON c.fkidtipoGrupoCanciones = t.idtipoGrupoCanciones JOIN artista a ON a.idArtista = t.fkidArtista WHERE c.Nombre ='"+ nombreCancion + "'";
             PreparedStatement psmt = con.prepareStatement(query);
             ResultSet rs;
             rs = psmt.executeQuery();
             
             if(rs.next())
             {
-            nombre= rs.getString("nombreCancion");
-             calificacion= rs.getString("c.Calificacion");
-             link= rs.getString("c.Link");
-             Genero= rs.getString("nombreGenero");
-             tipo= rs.getString("t.Nombre_tipo");
-             artista= rs.getString("nombreArtista");
+            nombrei= rs.getString("nombreCancion");
+             calificacioni= rs.getString("c.Calificacion");
+             linki= rs.getString("c.Link");
+             Generoi= rs.getString("nombreGenero");
+             tipoi= rs.getString("t.Nombre_tipo");
+             artistai= rs.getString("nombreArtista");
+             anioi=rs.getInt("t.año");
+             imgi=rs.getString("t.imagen");
+             
             
-            jLabel4.setText(nombre);
-            jLabel5.setText(artista);
-            jLabel6.setText(Genero);
-            jLabel8.setText(calificacion);
+            cancion.setText(nombrei);
+            Visualizar.artista.setText(artistai);
+            genero.setText(Generoi);
+            calif.setText(calificacioni);
+            link.setText(linki);
+            anio.setText(String.valueOf(anioi));
+            img.setText(imgi);
+            tipo.setText(tipoi);
+            
             
             
             }
@@ -69,7 +80,7 @@ public static int idcancion, idgenero, idartista, idTGC;
         try{
               
            Connection con = Conection.getConexion();
-            String query = "SELECT c.idCancion FROM cancion c WHERE c.Nombre ='"+ nombre + "'";
+            String query = "SELECT c.idCancion FROM cancion c WHERE c.Nombre ='"+ nombrei + "'";
             PreparedStatement psmt = con.prepareStatement(query);
             ResultSet rs;
             rs = psmt.executeQuery();
@@ -88,7 +99,7 @@ public static int idcancion, idgenero, idartista, idTGC;
         try{
               
            Connection con = Conection.getConexion();
-            String query = "SELECT idArtista FROM artista WHERE Nombre ='"+ artista + "'";
+            String query = "SELECT idArtista FROM artista WHERE Nombre ='"+ artistai + "'";
             PreparedStatement psmt = con.prepareStatement(query);
             ResultSet rs;
             rs = psmt.executeQuery();
@@ -106,7 +117,7 @@ public static int idcancion, idgenero, idartista, idTGC;
         try{
               
            Connection con = Conection.getConexion();
-            String query = "SELECT idTipoGrupoCanciones FROM TipoGrupoCanciones WHERE Nombre_tipo ='"+ tipo + "'";
+            String query = "SELECT idTipoGrupoCanciones FROM TipoGrupoCanciones WHERE Nombre_tipo ='"+ tipoi + "'";
             PreparedStatement psmt = con.prepareStatement(query);
             ResultSet rs;
             rs = psmt.executeQuery();
@@ -124,7 +135,7 @@ public static int idcancion, idgenero, idartista, idTGC;
         try{
               
            Connection con = Conection.getConexion();
-            String query = "SELECT idGeneroCancion FROM TipoGrupoCanciones WHERE Nombre ='"+ Genero + "'";
+            String query = "SELECT idGeneroCancion FROM TipoGrupoCanciones WHERE Nombre ='"+ Generoi + "'";
             PreparedStatement psmt = con.prepareStatement(query);
             ResultSet rs;
             rs = psmt.executeQuery();
@@ -152,11 +163,11 @@ public static int idcancion, idgenero, idartista, idTGC;
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        cancion = new javax.swing.JLabel();
+        artista = new javax.swing.JLabel();
+        genero = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        calif = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -164,6 +175,14 @@ public static int idcancion, idgenero, idartista, idTGC;
         jButton15 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        LinkLabel = new javax.swing.JLabel();
+        AnioLable = new javax.swing.JLabel();
+        TipoLabel = new javax.swing.JLabel();
+        link = new javax.swing.JLabel();
+        anio = new javax.swing.JLabel();
+        tipo = new javax.swing.JLabel();
+        img = new javax.swing.JLabel();
+        ImgLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,18 +201,18 @@ public static int idcancion, idgenero, idartista, idTGC;
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("-");
+        cancion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cancion.setText("-");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("-");
-        jLabel5.setToolTipText("");
+        artista.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        artista.setText("-");
+        artista.setToolTipText("");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("-");
+        genero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        genero.setText("-");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setText("-");
+        calif.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        calif.setText("-");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Nombre:");
@@ -238,6 +257,31 @@ public static int idcancion, idgenero, idartista, idTGC;
             }
         });
 
+        LinkLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LinkLabel.setText("Link:");
+
+        AnioLable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AnioLable.setText("Año");
+
+        TipoLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        TipoLabel.setText("Tipo");
+
+        link.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        link.setText("-");
+        link.setToolTipText("");
+
+        anio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        anio.setText("-");
+
+        tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tipo.setText("-");
+
+        img.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        img.setText("-");
+
+        ImgLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ImgLabel.setText("Imagen");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -264,23 +308,40 @@ public static int idcancion, idgenero, idartista, idTGC;
                                         .addComponent(jLabel7))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cancion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel12)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(calif, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(artista, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(AnioLable)
+                                .addGap(18, 18, 18)
+                                .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(TipoLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(LinkLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(link, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(ImgLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(228, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2)
@@ -289,7 +350,8 @@ public static int idcancion, idgenero, idartista, idTGC;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)))))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
@@ -301,27 +363,43 @@ public static int idcancion, idgenero, idartista, idTGC;
                 .addComponent(jLabel3)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancion, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(artista, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(calif))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LinkLabel)
+                    .addComponent(link, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AnioLable)
+                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TipoLabel)
+                    .addComponent(tipo))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ImgLabel)
+                            .addComponent(img))
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -350,12 +428,13 @@ public static int idcancion, idgenero, idartista, idTGC;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       if(InicioSesion.isAdmin){
-           Actualizar newFrame = new Actualizar();
-            newFrame.setVisible(true);
-            this.dispose();
+       if(!InicioSesion.isAdmin){
+           javax.swing.JOptionPane. showMessageDialog (this, "Su usuario no cuenta con permisos de administrador");
+           
        }
-       else {javax.swing.JOptionPane. showMessageDialog (this, "Su usuario no cuenta con permisos de administrador");}
+       else {Actualizar newFrame = new Actualizar();
+            newFrame.setVisible(true);
+            this.dispose();}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -394,6 +473,16 @@ public static int idcancion, idgenero, idartista, idTGC;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AnioLable;
+    private javax.swing.JLabel ImgLabel;
+    private javax.swing.JLabel LinkLabel;
+    private javax.swing.JLabel TipoLabel;
+    public static javax.swing.JLabel anio;
+    public static javax.swing.JLabel artista;
+    public static javax.swing.JLabel calif;
+    public static javax.swing.JLabel cancion;
+    public static javax.swing.JLabel genero;
+    public static javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton15;
@@ -403,11 +492,9 @@ public static int idcancion, idgenero, idartista, idTGC;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
-    public static javax.swing.JLabel jLabel4;
-    public static javax.swing.JLabel jLabel5;
-    public static javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    public static javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public static javax.swing.JLabel link;
+    public static javax.swing.JLabel tipo;
     // End of variables declaration//GEN-END:variables
 }
