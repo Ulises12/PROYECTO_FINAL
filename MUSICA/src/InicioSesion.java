@@ -23,7 +23,7 @@ public class InicioSesion extends javax.swing.JFrame {
     public String claveTemp;
     public String usuarioTemp;
     
-    public boolean isAdmin;
+    public static boolean isAdmin;
     boolean correctPass;
     boolean accessGranted;
     public String nombreUsuario;

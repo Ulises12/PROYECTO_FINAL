@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,7 +16,7 @@ import java.sql.SQLException;
  * @author USER1
  */
 public class Visualizar extends javax.swing.JFrame {
-
+public static int idcancion, idgenero, idartista, idTGC;
     /**
      * Creates new form Visualizar
      */
@@ -27,6 +28,14 @@ public class Visualizar extends javax.swing.JFrame {
     
     public static void consultaVisualizar ()
     {
+        String nombre="";
+         String calificacion="";
+         String link="";
+         String Genero="";
+         String tipo="";
+         String artista="";
+         
+         
      try{
               
            Connection con = Conection.getConexion();
@@ -37,22 +46,97 @@ public class Visualizar extends javax.swing.JFrame {
             
             if(rs.next())
             {
-            String nombre= rs.getString("nombreCancion");
-            String calificacion= rs.getString("c.Calificacion");
-            String link= rs.getString("c.Link");
-            String Genero= rs.getString("nombreGenero");
-            String tipo= rs.getString("t.Nombre_tipo");
-            String artista= rs.getString("nombreArtista");
+            nombre= rs.getString("nombreCancion");
+             calificacion= rs.getString("c.Calificacion");
+             link= rs.getString("c.Link");
+             Genero= rs.getString("nombreGenero");
+             tipo= rs.getString("t.Nombre_tipo");
+             artista= rs.getString("nombreArtista");
             
             jLabel4.setText(nombre);
             jLabel5.setText(artista);
             jLabel6.setText(Genero);
             jLabel8.setText(calificacion);
+            
+            
             }
         }
      catch (SQLException ex){
             System.out.println(ex.getMessage());
             System.out.println("No existen valores");
+        } 
+     
+        try{
+              
+           Connection con = Conection.getConexion();
+            String query = "SELECT c.idCancion FROM cancion c WHERE c.Nombre ='"+ nombre + "'";
+            PreparedStatement psmt = con.prepareStatement(query);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            if(rs.next())
+            {
+            idcancion= rs.getInt("c.idCancion");
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No existen valores cancion");
+        } 
+        
+        
+        try{
+              
+           Connection con = Conection.getConexion();
+            String query = "SELECT idArtista FROM artista WHERE Nombre ='"+ artista + "'";
+            PreparedStatement psmt = con.prepareStatement(query);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            if(rs.next())
+            {
+            idartista= rs.getInt("idArtista");
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No existen valores artista");
+        } 
+        
+        try{
+              
+           Connection con = Conection.getConexion();
+            String query = "SELECT idTipoGrupoCanciones FROM TipoGrupoCanciones WHERE Nombre_tipo ='"+ tipo + "'";
+            PreparedStatement psmt = con.prepareStatement(query);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            if(rs.next())
+            {
+            idTGC= rs.getInt("idTipoGrupoCanciones");
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No existen valores artista");
+        } 
+        
+        try{
+              
+           Connection con = Conection.getConexion();
+            String query = "SELECT idGeneroCancion FROM TipoGrupoCanciones WHERE Nombre ='"+ Genero + "'";
+            PreparedStatement psmt = con.prepareStatement(query);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            if(rs.next())
+            {
+            idgenero= rs.getInt("idGeneroCancion");
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No existen valores artista");
         } 
         
     }
@@ -266,9 +350,12 @@ public class Visualizar extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Actualizar newFrame = new Actualizar();
+       if(InicioSesion.isAdmin){
+           Actualizar newFrame = new Actualizar();
             newFrame.setVisible(true);
             this.dispose();
+       }
+       else {javax.swing.JOptionPane. showMessageDialog (this, "Su usuario no cuenta con permisos de administrador");}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

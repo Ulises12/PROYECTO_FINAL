@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +21,7 @@ public static String nombreCancion;
      */
     public Actualizar() {
         initComponents();
+        Fildcombo();
        
         //if(actnombre.isSelected()){nnombre.setVisible(false);} else nnombre.setVisible(true);
     }
@@ -35,20 +42,18 @@ public static String nombreCancion;
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         actnombre = new javax.swing.JToggleButton();
-        actnombre1 = new javax.swing.JToggleButton();
-        nnombre1 = new javax.swing.JTextField();
-        actnombre3 = new javax.swing.JToggleButton();
-        nnombre3 = new javax.swing.JTextField();
-        nnombre4 = new javax.swing.JTextField();
-        actnombre4 = new javax.swing.JToggleButton();
-        actnombre5 = new javax.swing.JToggleButton();
-        nnombre5 = new javax.swing.JTextField();
-        nnombre6 = new javax.swing.JTextField();
-        actnombre6 = new javax.swing.JToggleButton();
-        tipo = new javax.swing.JComboBox();
-        genero = new javax.swing.JComboBox();
-        actnombre7 = new javax.swing.JToggleButton();
-        actnombre8 = new javax.swing.JToggleButton();
+        actartista = new javax.swing.JToggleButton();
+        nartista = new javax.swing.JTextField();
+        nimg = new javax.swing.JTextField();
+        actanio = new javax.swing.JToggleButton();
+        actlink = new javax.swing.JToggleButton();
+        nlink = new javax.swing.JTextField();
+        nanio = new javax.swing.JTextField();
+        actimg = new javax.swing.JToggleButton();
+        ntipo = new javax.swing.JComboBox();
+        ngenero = new javax.swing.JComboBox();
+        actgenero = new javax.swing.JToggleButton();
+        acttipo = new javax.swing.JToggleButton();
 
         actnombre2.setText("Actualizar Nombre");
         actnombre2.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +81,11 @@ public static String nombreCancion;
         });
 
         jButton1.setText("Aplicar cambios");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Menú");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -91,96 +101,83 @@ public static String nombreCancion;
             }
         });
 
-        actnombre1.setText("Actualizar Artista");
-        actnombre1.addActionListener(new java.awt.event.ActionListener() {
+        actartista.setText("Actualizar Artista");
+        actartista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre1ActionPerformed(evt);
+                actartistaActionPerformed(evt);
             }
         });
 
-        nnombre1.addActionListener(new java.awt.event.ActionListener() {
+        nartista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nnombre1ActionPerformed(evt);
+                nartistaActionPerformed(evt);
             }
         });
 
-        actnombre3.setText("Actualizar Género");
-        actnombre3.addActionListener(new java.awt.event.ActionListener() {
+        nimg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre3ActionPerformed(evt);
+                nimgActionPerformed(evt);
             }
         });
 
-        nnombre3.addActionListener(new java.awt.event.ActionListener() {
+        actanio.setText("Actualizar Año");
+        actanio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nnombre3ActionPerformed(evt);
+                actanioActionPerformed(evt);
             }
         });
 
-        nnombre4.addActionListener(new java.awt.event.ActionListener() {
+        actlink.setText("Actualizar link");
+        actlink.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nnombre4ActionPerformed(evt);
+                actlinkActionPerformed(evt);
             }
         });
 
-        actnombre4.setText("Actualizar Año");
-        actnombre4.addActionListener(new java.awt.event.ActionListener() {
+        nlink.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre4ActionPerformed(evt);
+                nlinkActionPerformed(evt);
             }
         });
 
-        actnombre5.setText("Actualizar link");
-        actnombre5.addActionListener(new java.awt.event.ActionListener() {
+        nanio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre5ActionPerformed(evt);
+                nanioActionPerformed(evt);
             }
         });
 
-        nnombre5.addActionListener(new java.awt.event.ActionListener() {
+        actimg.setText("Actualizar Imagen");
+        actimg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nnombre5ActionPerformed(evt);
+                actimgActionPerformed(evt);
             }
         });
 
-        nnombre6.addActionListener(new java.awt.event.ActionListener() {
+        ntipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Album", "Single" }));
+        ntipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nnombre6ActionPerformed(evt);
+                ntipoActionPerformed(evt);
             }
         });
 
-        actnombre6.setText("Actualizar Imagen");
-        actnombre6.addActionListener(new java.awt.event.ActionListener() {
+        ngenero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dance", "Jazz", "Rap", "Hip-Hop" }));
+        ngenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre6ActionPerformed(evt);
+                ngeneroActionPerformed(evt);
             }
         });
 
-        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Album", "Single" }));
-        tipo.addActionListener(new java.awt.event.ActionListener() {
+        actgenero.setText("Actualizar Género");
+        actgenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoActionPerformed(evt);
+                actgeneroActionPerformed(evt);
             }
         });
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dance", "Jazz", "Rap", "Hip-Hop" }));
-        genero.addActionListener(new java.awt.event.ActionListener() {
+        acttipo.setText("Actualizar Tipo");
+        acttipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generoActionPerformed(evt);
-            }
-        });
-
-        actnombre7.setText("Actualizar Género");
-        actnombre7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre7ActionPerformed(evt);
-            }
-        });
-
-        actnombre8.setText("Actualizar Tipo");
-        actnombre8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actnombre8ActionPerformed(evt);
+                acttipoActionPerformed(evt);
             }
         });
 
@@ -194,37 +191,32 @@ public static String nombreCancion;
                         .addGap(87, 87, 87)
                         .addComponent(jLabel1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addComponent(actnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(actnombre6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(actnombre7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(actnombre8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(actimg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(actgenero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(acttipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nnombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(nimg, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ngenero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ntipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(34, 34, 34)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(actnombre5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(actnombre4, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+                                        .addComponent(actlink, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(actanio, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                                     .addGap(40, 40, 40)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(nnombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(nnombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(nlink, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nanio, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(actnombre1)
+                                    .addComponent(actartista)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nartista, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(actnombre)
                                     .addGap(29, 29, 29)
@@ -247,33 +239,29 @@ public static String nombreCancion;
                     .addComponent(nnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actnombre1)
-                    .addComponent(nnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actartista)
+                    .addComponent(nartista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actnombre3)
-                    .addComponent(nnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actanio)
+                    .addComponent(nanio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actnombre4)
-                    .addComponent(nnombre6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actnombre5)
-                    .addComponent(nnombre5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actlink)
+                    .addComponent(nlink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actnombre6)
-                    .addComponent(nnombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actimg)
+                    .addComponent(nimg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actnombre7))
+                    .addComponent(ngenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actgenero))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actnombre8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                    .addComponent(ntipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(acttipo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -282,7 +270,23 @@ public static String nombreCancion;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+private void Fildcombo(){
+        
+        try{
+            Connection con = Conection.getConexion();
+            String sql = "Select distinct nombre from generocancion order by nombre";
+            PreparedStatement psmt = con.prepareStatement(sql);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            while(rs.next()){
+            String generito=rs.getString("Nombre");
+            ngenero.addItem(generito);
+            }
+         } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          PaginaAdmin newFrame = new PaginaAdmin();
@@ -300,13 +304,13 @@ public static String nombreCancion;
         // TODO add your handling code here:
     }//GEN-LAST:event_nnombreActionPerformed
 
-    private void actnombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre1ActionPerformed
+    private void actartistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actartistaActionPerformed
+if(actartista.isSelected()){nartista.setVisible(false);} else nartista.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_actartistaActionPerformed
 
-    private void nnombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre1ActionPerformed
+    private void nartistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nartistaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nnombre1ActionPerformed
+    }//GEN-LAST:event_nartistaActionPerformed
 
     private void actnombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre2ActionPerformed
         // TODO add your handling code here:
@@ -316,53 +320,160 @@ public static String nombreCancion;
         // TODO add your handling code here:
     }//GEN-LAST:event_nnombre2ActionPerformed
 
-    private void actnombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre3ActionPerformed
+    private void nimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre3ActionPerformed
+    }//GEN-LAST:event_nimgActionPerformed
 
-    private void nnombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nnombre3ActionPerformed
+    private void actanioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actanioActionPerformed
+if(actanio.isSelected()){nanio.setVisible(false);} else nanio.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_actanioActionPerformed
 
-    private void nnombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nnombre4ActionPerformed
+    private void actlinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actlinkActionPerformed
+if(actlink.isSelected()){nlink.setVisible(false);} else nlink.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_actlinkActionPerformed
 
-    private void actnombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre4ActionPerformed
+    private void nlinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nlinkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre4ActionPerformed
+    }//GEN-LAST:event_nlinkActionPerformed
 
-    private void actnombre5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre5ActionPerformed
+    private void nanioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nanioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre5ActionPerformed
+    }//GEN-LAST:event_nanioActionPerformed
 
-    private void nnombre5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nnombre5ActionPerformed
+    private void actimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actimgActionPerformed
+if(actimg.isSelected()){nimg.setVisible(false);} else nimg.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_actimgActionPerformed
 
-    private void nnombre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre6ActionPerformed
+    private void ntipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ntipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nnombre6ActionPerformed
+    }//GEN-LAST:event_ntipoActionPerformed
 
-    private void actnombre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre6ActionPerformed
+    private void ngeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre6ActionPerformed
+    }//GEN-LAST:event_ngeneroActionPerformed
 
-    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoActionPerformed
+    private void actgeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actgeneroActionPerformed
+if(actgenero.isSelected()){ngenero.setVisible(false);} else ngenero.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_actgeneroActionPerformed
 
-    private void generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generoActionPerformed
+    private void acttipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acttipoActionPerformed
+if(acttipo.isSelected()){ntipo.setVisible(false);} else ntipo.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_acttipoActionPerformed
 
-    private void actnombre7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre7ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //String tempNombre = nombreCancion.getText();
+        if(!actnombre.isSelected()){
+            try{
 
-    private void actnombre8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_actnombre8ActionPerformed
+                Connection con = Conection.getConexion();
+                String query = "call UPDcancion('"+nnombre.getText()+"', "+Visualizar.idcancion+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success nnom");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        if(!actartista.isSelected()){
+            try{
+
+                Connection con = Conection.getConexion();
+                String query = "call UPDartista('"+nartista.getText()+"', "+Visualizar.idartista+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success nart");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        if(!actanio.isSelected()){
+            try{
+
+                Connection con = Conection.getConexion();
+                String query = "call UPDanio('"+nanio.getText()+"', "+Visualizar.idTGC+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success nanio");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+        if(!actlink.isSelected()){
+            try{
+
+                Connection con = Conection.getConexion();
+                String query = "call UPDlink('"+nlink.getText()+"', "+Visualizar.idcancion+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success nli");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+        if(!actimg.isSelected()){
+            try{
+
+                Connection con = Conection.getConexion();
+                String query = "call UPDimg('"+nimg.getText()+"', "+Visualizar.idTGC+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success nimg");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+        if(!actgenero.isSelected()){
+            try{
+                String gener=String.valueOf(ngenero.getSelectedItem());
+                Connection con = Conection.getConexion();
+                String query = "call UPDgenero('"+gener+"', "+Visualizar.idgenero+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success ngen");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+        if(!acttipo.isSelected()){
+            try{
+                String tip=String.valueOf(ntipo.getSelectedItem());
+                Connection con = Conection.getConexion();
+                String query = "call UPDtipo('"+tip+"', "+Visualizar.idTGC+");";
+
+                PreparedStatement psmt = con.prepareStatement(query);
+                ResultSet rs;
+                rs = psmt.executeQuery();
+
+                System.out.println("sql success ntip");
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,26 +511,24 @@ public static String nombreCancion;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton actanio;
+    private javax.swing.JToggleButton actartista;
+    private javax.swing.JToggleButton actgenero;
+    private javax.swing.JToggleButton actimg;
+    private javax.swing.JToggleButton actlink;
     private javax.swing.JToggleButton actnombre;
-    private javax.swing.JToggleButton actnombre1;
     private javax.swing.JToggleButton actnombre2;
-    private javax.swing.JToggleButton actnombre3;
-    private javax.swing.JToggleButton actnombre4;
-    private javax.swing.JToggleButton actnombre5;
-    private javax.swing.JToggleButton actnombre6;
-    private javax.swing.JToggleButton actnombre7;
-    private javax.swing.JToggleButton actnombre8;
-    private javax.swing.JComboBox genero;
+    private javax.swing.JToggleButton acttipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField nanio;
+    private javax.swing.JTextField nartista;
+    private javax.swing.JComboBox ngenero;
+    private javax.swing.JTextField nimg;
+    private javax.swing.JTextField nlink;
     private javax.swing.JTextField nnombre;
-    private javax.swing.JTextField nnombre1;
     private javax.swing.JTextField nnombre2;
-    private javax.swing.JTextField nnombre3;
-    private javax.swing.JTextField nnombre4;
-    private javax.swing.JTextField nnombre5;
-    private javax.swing.JTextField nnombre6;
-    private javax.swing.JComboBox tipo;
+    private javax.swing.JComboBox ntipo;
     // End of variables declaration//GEN-END:variables
 }

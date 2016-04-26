@@ -45,24 +45,18 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="actnombre3" min="-2" pref="127" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="nnombre3" min="-2" pref="185" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="actnombre6" max="32767" attributes="0"/>
-                              <Component id="actnombre7" max="32767" attributes="0"/>
-                              <Component id="actnombre8" alignment="0" max="32767" attributes="0"/>
+                              <Component id="actimg" max="32767" attributes="0"/>
+                              <Component id="actgenero" max="32767" attributes="0"/>
+                              <Component id="acttipo" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nnombre4" min="-2" pref="185" max="-2" attributes="0"/>
-                              <Component id="genero" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="tipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="nimg" min="-2" pref="185" max="-2" attributes="0"/>
+                              <Component id="ngenero" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="ntipo" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -70,19 +64,19 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="actnombre5" max="32767" attributes="0"/>
-                                      <Component id="actnombre4" pref="126" max="32767" attributes="0"/>
+                                      <Component id="actlink" max="32767" attributes="0"/>
+                                      <Component id="actanio" pref="126" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="nnombre5" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <Component id="nnombre6" min="-2" pref="185" max="-2" attributes="0"/>
+                                      <Component id="nlink" min="-2" pref="185" max="-2" attributes="0"/>
+                                      <Component id="nanio" min="-2" pref="185" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="actnombre1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="actartista" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="nnombre1" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <Component id="nartista" min="-2" pref="185" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="actnombre" min="-2" max="-2" attributes="0"/>
@@ -115,40 +109,35 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="actnombre1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nnombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="actartista" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nartista" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="actnombre3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nnombre3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="actanio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nanio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="actnombre4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nnombre6" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="actnombre5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nnombre5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="actlink" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nlink" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="actnombre6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nnombre4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="actimg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nimg" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="genero" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="actnombre7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ngenero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="actgenero" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="actnombre8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ntipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="acttipo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -179,6 +168,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Aplicar cambios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
@@ -196,72 +188,59 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombreActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre1">
+    <Component class="javax.swing.JToggleButton" name="actartista">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar Artista"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actartistaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="nnombre1">
+    <Component class="javax.swing.JTextField" name="nartista">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nnombre1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nartistaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Actualizar G&#xe9;nero"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="nimg">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nimgActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="nnombre3">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nnombre3ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nnombre4">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nnombre4ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre4">
+    <Component class="javax.swing.JToggleButton" name="actanio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar A&#xf1;o"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actanioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre5">
+    <Component class="javax.swing.JToggleButton" name="actlink">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar link"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actlinkActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="nnombre5">
+    <Component class="javax.swing.JTextField" name="nlink">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nnombre5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nlinkActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="nnombre6">
+    <Component class="javax.swing.JTextField" name="nanio">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nnombre6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nanioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre6">
+    <Component class="javax.swing.JToggleButton" name="actimg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar Imagen"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actimgActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="tipo">
+    <Component class="javax.swing.JComboBox" name="ntipo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -271,10 +250,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ntipoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="genero">
+    <Component class="javax.swing.JComboBox" name="ngenero">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -286,23 +265,23 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ngeneroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre7">
+    <Component class="javax.swing.JToggleButton" name="actgenero">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar G&#xe9;nero"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actgeneroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="actnombre8">
+    <Component class="javax.swing.JToggleButton" name="acttipo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar Tipo"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actnombre8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="acttipoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
