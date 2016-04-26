@@ -9,12 +9,14 @@
  * @author USER1
  */
 public class Actualizar extends javax.swing.JFrame {
-
-    /**
+public static String nombreCancion;
+/**
      * Creates new form Actualizar
      */
     public Actualizar() {
         initComponents();
+       
+        //if(actnombre.isSelected()){nnombre.setVisible(false);} else nnombre.setVisible(true);
     }
 
     /**
@@ -26,17 +28,40 @@ public class Actualizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        actnombre2 = new javax.swing.JToggleButton();
+        nnombre2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        nnombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        actnombre = new javax.swing.JToggleButton();
+        actnombre1 = new javax.swing.JToggleButton();
+        nnombre1 = new javax.swing.JTextField();
+        actnombre3 = new javax.swing.JToggleButton();
+        nnombre3 = new javax.swing.JTextField();
+        nnombre4 = new javax.swing.JTextField();
+        actnombre4 = new javax.swing.JToggleButton();
+        actnombre5 = new javax.swing.JToggleButton();
+        nnombre5 = new javax.swing.JTextField();
+        nnombre6 = new javax.swing.JTextField();
+        actnombre6 = new javax.swing.JToggleButton();
+        tipo = new javax.swing.JComboBox();
+        genero = new javax.swing.JComboBox();
+        actnombre7 = new javax.swing.JToggleButton();
+        actnombre8 = new javax.swing.JToggleButton();
+
+        actnombre2.setText("Actualizar Nombre");
+        actnombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre2ActionPerformed(evt);
+            }
+        });
+
+        nnombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombre2ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,28 +69,118 @@ public class Actualizar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("Actualizar canción");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel2.setText("Nombre canción a actualizar: ");
+        nnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombreActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel3.setText("Nuevo nombre:");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel4.setText("Nuevo Género:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel5.setText("Nuevo artista:");
-
-        jButton1.setText("Actualizar");
+        jButton1.setText("Aplicar cambios");
 
         jButton2.setText("Menú");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        actnombre.setText("Actualizar Nombre");
+        actnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombreActionPerformed(evt);
+            }
+        });
+
+        actnombre1.setText("Actualizar Artista");
+        actnombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre1ActionPerformed(evt);
+            }
+        });
+
+        nnombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombre1ActionPerformed(evt);
+            }
+        });
+
+        actnombre3.setText("Actualizar Género");
+        actnombre3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre3ActionPerformed(evt);
+            }
+        });
+
+        nnombre3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombre3ActionPerformed(evt);
+            }
+        });
+
+        nnombre4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombre4ActionPerformed(evt);
+            }
+        });
+
+        actnombre4.setText("Actualizar Año");
+        actnombre4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre4ActionPerformed(evt);
+            }
+        });
+
+        actnombre5.setText("Actualizar link");
+        actnombre5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre5ActionPerformed(evt);
+            }
+        });
+
+        nnombre5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombre5ActionPerformed(evt);
+            }
+        });
+
+        nnombre6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nnombre6ActionPerformed(evt);
+            }
+        });
+
+        actnombre6.setText("Actualizar Imagen");
+        actnombre6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre6ActionPerformed(evt);
+            }
+        });
+
+        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Album", "Single" }));
+        tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoActionPerformed(evt);
+            }
+        });
+
+        genero.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dance", "Jazz", "Rap", "Hip-Hop" }));
+        genero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generoActionPerformed(evt);
+            }
+        });
+
+        actnombre7.setText("Actualizar Género");
+        actnombre7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre7ActionPerformed(evt);
+            }
+        });
+
+        actnombre8.setText("Actualizar Tipo");
+        actnombre8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actnombre8ActionPerformed(evt);
             }
         });
 
@@ -78,54 +193,91 @@ public class Actualizar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(37, 37, 37)
+                            .addComponent(actnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(actnombre6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(actnombre7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(actnombre8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nnombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(34, 34, 34)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(actnombre5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(actnombre4, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+                                    .addGap(40, 40, 40)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(nnombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nnombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(actnombre1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(actnombre)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(nnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(58, 58, 58)
                             .addComponent(jButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4))))))
-                .addContainerGap(74, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(22, 22, 22))
+                            .addGap(68, 68, 68)
+                            .addComponent(jButton2))))
+                .addGap(22, 47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(actnombre)
+                    .addComponent(nnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actnombre1)
+                    .addComponent(nnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actnombre3)
+                    .addComponent(nnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actnombre4)
+                    .addComponent(nnombre6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actnombre5)
+                    .addComponent(nnombre5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(actnombre6)
+                    .addComponent(nnombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actnombre7))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actnombre8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -137,6 +289,80 @@ public class Actualizar extends javax.swing.JFrame {
             newFrame.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void actnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombreActionPerformed
+        // TODO add your handling code here:
+        
+        if(actnombre.isSelected()){nnombre.setVisible(false);} else nnombre.setVisible(true);
+    }//GEN-LAST:event_actnombreActionPerformed
+
+    private void nnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombreActionPerformed
+
+    private void actnombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre1ActionPerformed
+
+    private void nnombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombre1ActionPerformed
+
+    private void actnombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre2ActionPerformed
+
+    private void nnombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombre2ActionPerformed
+
+    private void actnombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre3ActionPerformed
+
+    private void nnombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombre3ActionPerformed
+
+    private void nnombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombre4ActionPerformed
+
+    private void actnombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre4ActionPerformed
+
+    private void actnombre5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre5ActionPerformed
+
+    private void nnombre5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombre5ActionPerformed
+
+    private void nnombre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nnombre6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nnombre6ActionPerformed
+
+    private void actnombre6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre6ActionPerformed
+
+    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoActionPerformed
+
+    private void generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_generoActionPerformed
+
+    private void actnombre7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre7ActionPerformed
+
+    private void actnombre8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actnombre8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actnombre8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,16 +400,26 @@ public class Actualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton actnombre;
+    private javax.swing.JToggleButton actnombre1;
+    private javax.swing.JToggleButton actnombre2;
+    private javax.swing.JToggleButton actnombre3;
+    private javax.swing.JToggleButton actnombre4;
+    private javax.swing.JToggleButton actnombre5;
+    private javax.swing.JToggleButton actnombre6;
+    private javax.swing.JToggleButton actnombre7;
+    private javax.swing.JToggleButton actnombre8;
+    private javax.swing.JComboBox genero;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField nnombre;
+    private javax.swing.JTextField nnombre1;
+    private javax.swing.JTextField nnombre2;
+    private javax.swing.JTextField nnombre3;
+    private javax.swing.JTextField nnombre4;
+    private javax.swing.JTextField nnombre5;
+    private javax.swing.JTextField nnombre6;
+    private javax.swing.JComboBox tipo;
     // End of variables declaration//GEN-END:variables
 }
