@@ -1,3 +1,8 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -43,6 +48,11 @@ public class Elimiinar extends javax.swing.JFrame {
         jLabel2.setText("Nombre de la canción a eliminar: ");
 
         jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Menú");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +109,21 @@ public class Elimiinar extends javax.swing.JFrame {
             newFrame.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+String tempNombre = jTextField1.getText();
+        try{
+            Connection con = Conection.getConexion();
+            String query = "DELETE FROM cancion WHERE Nombre = '"+tempNombre+"'";
+
+            PreparedStatement psmt = con.prepareStatement(query);
+
+            psmt.execute();
+            System.out.println("sql success");
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
