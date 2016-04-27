@@ -419,11 +419,91 @@ public static int idcancion, idgenero, idartista, idTGC;
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
+        try{              
+            Connection con = Conection.getConexion();
+            
+            String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
+            String sentenciaInsert= "Insert into likes values(?,?,?,?)";
+            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";
+            
+            PreparedStatement psmt = con.prepareStatement(query); 
+            PreparedStatement psmtMax= con.prepareStatement(queryMax);            
+            PreparedStatement psmtInsert= con.prepareStatement(sentenciaInsert);
+   
+            ResultSet rs;               
+            ResultSet rsMax;
+            
+            rs = psmt.executeQuery();  
+            rsMax= psmtMax.executeQuery();
+            
+            if(rs.next() && rsMax.next())
+            {
+                 int val1 = rsMax.getInt("MaxLikes");
+                 System.out.println(val1);
+                 int val2 = rs.getInt("idCancion");
+                 System.out.println(val2);
+                 int val3 = rs.getInt("idUsuario");
+                 System.out.println(val3);
+                 
+                 int idLikes= val1+1;                 
+                
+                 psmtInsert.setInt(1,idLikes);
+                 psmtInsert.setInt(2,val2);
+                 psmtInsert.setInt(3,val3);
+                 psmtInsert.setInt(4, -1);
+                 psmtInsert.executeUpdate();
         
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No se puede");
+        } 
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        try{              
+            Connection con = Conection.getConexion();
+            
+            String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
+            String sentenciaInsert= "Insert into likes values(?,?,?,?)";
+            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";
+            
+            PreparedStatement psmt = con.prepareStatement(query); 
+            PreparedStatement psmtMax= con.prepareStatement(queryMax);            
+            PreparedStatement psmtInsert= con.prepareStatement(sentenciaInsert);
+   
+            ResultSet rs;               
+            ResultSet rsMax;
+            
+            rs = psmt.executeQuery();  
+            rsMax= psmtMax.executeQuery();
+            
+            if(rs.next() && rsMax.next())
+            {
+                 int val1 = rsMax.getInt("MaxLikes");
+                 System.out.println(val1);
+                 int val2 = rs.getInt("idCancion");
+                 System.out.println(val2);
+                 int val3 = rs.getInt("idUsuario");
+                 System.out.println(val3);
+                 
+                 int idLikes= val1+1;                 
+                
+                 psmtInsert.setInt(2,val2);
+                 psmtInsert.setInt(3,val3);
+                 psmtInsert.setInt(4,1);
+                 psmtInsert.executeUpdate();
+        
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No se puede");
+        } 
+        
+                       
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
