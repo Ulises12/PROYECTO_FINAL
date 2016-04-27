@@ -418,72 +418,14 @@ public static int idcancion, idgenero, idartista, idTGC;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+
         // TODO add your handling code here:
         try{              
             Connection con = Conection.getConexion();
             
             String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
             String sentenciaInsert= "Insert into likes values(?,?,?,?)";
-            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";
-            
-            PreparedStatement psmt = con.prepareStatement(query); 
-            PreparedStatement psmtMax= con.prepareStatement(queryMax);            
-            PreparedStatement psmtInsert= con.prepareStatement(sentenciaInsert);
-   
-            ResultSet rs;               
-            ResultSet rsMax;
-            
-            rs = psmt.executeQuery();  
-            rsMax= psmtMax.executeQuery();
-            
-            if(rs.next() && rsMax.next())
-            {
-                 int val1 = rsMax.getInt("MaxLikes");
-                 System.out.println(val1);
-                 int val2 = rs.getInt("idCancion");
-                 System.out.println(val2);
-                 int val3 = rs.getInt("idUsuario");
-                 System.out.println(val3);
-
-                 System.out.println("User ID" +  InicioSesion.pidU);
-                 int idLikes= val1+1;                 
-                
-                 String queryNoLike = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
-                 PreparedStatement psmtNoLike= con.prepareStatement(queryNoLike);
-                 ResultSet NoLikee;
-                 NoLikee= psmtNoLike.executeQuery();
-                 
-                 
-                 if(NoLikee.next())
-                 {
-                     int numero=NoLikee.getInt("numero");
-                   if(numero<1){ 
-                 psmtInsert.setInt(1,idLikes);
-                 psmtInsert.setInt(2,val2);
-                 psmtInsert.setInt(3,InicioSesion.pidU);
-                 psmtInsert.setInt(4, -1);
-                 psmtInsert.executeUpdate();}
-                  else
-                      javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
-                 }
-                 
-                
-            }
-        }
-     catch (SQLException ex){
-            System.out.println(ex.getMessage());
-            System.out.println("No se puede");
-        } 
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-        try{              
-            Connection con = Conection.getConexion();
-            
-            String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
-            String sentenciaInsert= "Insert into likes values(?,?,?,?)";
-            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";
+            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";           
             
             PreparedStatement psmt = con.prepareStatement(query); 
             PreparedStatement psmtMax= con.prepareStatement(queryMax);            
@@ -507,19 +449,110 @@ public static int idcancion, idgenero, idartista, idTGC;
                  System.out.println("User Id" +  InicioSesion.pidU);
 
                  int idLikes= val1+1;                 
-                   String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
+                 
+                 //SACA EL PROMEDIO
+                 String queryProm="SELECT sum(valor)*5/count(valor) AS Promedio FROM likes WHERE fkidCancion = '" + val2 + "' GROUP BY fkidcancion";
+                 PreparedStatement psmtProm = con.prepareStatement(queryProm);
+                 ResultSet prom;
+                 prom = psmtProm.executeQuery();                                 
+                 
+                 String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
                  PreparedStatement psmtNoLike1= con.prepareStatement(queryNoLike1);
-                 ResultSet NoLikee1;
+                 ResultSet NoLikee1;                 
                  NoLikee1= psmtNoLike1.executeQuery();
-                 if(NoLikee1.next())
-                 {
+                 
+                 if(NoLikee1.next() && prom.next())
+                 {                                                      
                      int numero=NoLikee1.getInt("numero");
-                   if(numero<1){ 
-                 psmtInsert.setInt(1,idLikes);
-                 psmtInsert.setInt(2,val2);
-                 psmtInsert.setInt(3,InicioSesion.pidU);
-                 psmtInsert.setInt(4, 1);
-                 psmtInsert.executeUpdate();}
+                   if(numero<1){                  
+                       psmtInsert.setInt(1,idLikes);                 
+                       psmtInsert.setInt(2,val2);
+                       psmtInsert.setInt(3,InicioSesion.pidU);
+                       psmtInsert.setInt(4, -1);
+                       psmtInsert.executeUpdate();
+                       
+                       int promedio = prom.getInt("Promedio");                 
+                     System.out.println("Promedio" + promedio);
+                 
+                     //INGRESA EL VALOR A CALIFICACION                 
+                     String queryCalif= "UPDATE cancion SET Calificacion ='" + promedio + "'  WHERE idcancion = '" + val2 + "' ";
+                     PreparedStatement psmtCalif = con.prepareStatement(queryCalif);
+                     psmtCalif.executeUpdate();     
+                   }
+                   
+                  else
+                      javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
+                 }
+        
+    
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No se puede");
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        try{              
+            Connection con = Conection.getConexion();
+            
+            String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
+            String sentenciaInsert= "Insert into likes values(?,?,?,?)";
+            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";           
+            
+            PreparedStatement psmt = con.prepareStatement(query); 
+            PreparedStatement psmtMax= con.prepareStatement(queryMax);            
+            PreparedStatement psmtInsert= con.prepareStatement(sentenciaInsert);
+   
+            ResultSet rs;               
+            ResultSet rsMax;
+            
+            rs = psmt.executeQuery();  
+            rsMax= psmtMax.executeQuery();
+            
+            if(rs.next() && rsMax.next())
+            {
+                 int val1 = rsMax.getInt("MaxLikes");
+                 System.out.println(val1);
+                 int val2 = rs.getInt("idCancion");
+                 System.out.println(val2);
+                 int val3 = rs.getInt("idUsuario");
+                 System.out.println(val3);
+                 
+                 System.out.println("User Id" +  InicioSesion.pidU);
+
+                 int idLikes= val1+1;                 
+                 
+                 //SACA EL PROMEDIO
+                 String queryProm="SELECT sum(valor)*5/count(valor) AS Promedio FROM likes WHERE fkidCancion = '" + val2 + "' GROUP BY fkidcancion";
+                 PreparedStatement psmtProm = con.prepareStatement(queryProm);
+                 ResultSet prom;
+                 prom = psmtProm.executeQuery();                                 
+                 
+                 String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
+                 PreparedStatement psmtNoLike1= con.prepareStatement(queryNoLike1);
+                 ResultSet NoLikee1;                 
+                 NoLikee1= psmtNoLike1.executeQuery();
+                 
+                 if(NoLikee1.next() && prom.next())
+                 {                 
+                     int promedio = prom.getInt("Promedio");                 
+                     System.out.println("Promedio" + promedio);
+                 
+                     //INGRESA EL VALOR A CALIFICACION                 
+                     String queryCalif= "UPDATE cancion SET Calificacion ='" + promedio + "'  WHERE idcancion = '" + val2 + "' ";
+                     PreparedStatement psmtCalif = con.prepareStatement(queryCalif);
+                     psmtCalif.executeUpdate();                     
+                     int numero=NoLikee1.getInt("numero");
+                   if(numero<1){                  
+                       psmtInsert.setInt(1,idLikes);                 
+                       psmtInsert.setInt(2,val2);
+                       psmtInsert.setInt(3,InicioSesion.pidU);
+                       psmtInsert.setInt(4, 1);
+                       psmtInsert.executeUpdate();
+                   }
                   else
                       javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
                  }
