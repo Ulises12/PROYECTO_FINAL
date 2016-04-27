@@ -448,12 +448,26 @@ public static int idcancion, idgenero, idartista, idTGC;
                  System.out.println("User ID" +  InicioSesion.pidU);
                  int idLikes= val1+1;                 
                 
+                 String queryNoLike = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
+                 PreparedStatement psmtNoLike= con.prepareStatement(queryNoLike);
+                 ResultSet NoLikee;
+                 NoLikee= psmtNoLike.executeQuery();
+                 
+                 
+                 if(NoLikee.next())
+                 {
+                     int numero=NoLikee.getInt("numero");
+                   if(numero<1){ 
                  psmtInsert.setInt(1,idLikes);
                  psmtInsert.setInt(2,val2);
                  psmtInsert.setInt(3,InicioSesion.pidU);
                  psmtInsert.setInt(4, -1);
-                 psmtInsert.executeUpdate();
-        
+                 psmtInsert.executeUpdate();}
+                  else
+                      javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
+                 }
+                 
+                
             }
         }
      catch (SQLException ex){
@@ -493,12 +507,22 @@ public static int idcancion, idgenero, idartista, idTGC;
                  System.out.println("User Id" +  InicioSesion.pidU);
 
                  int idLikes= val1+1;                 
-                
+                   String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
+                 PreparedStatement psmtNoLike1= con.prepareStatement(queryNoLike1);
+                 ResultSet NoLikee1;
+                 NoLikee1= psmtNoLike1.executeQuery();
+                 if(NoLikee1.next())
+                 {
+                     int numero=NoLikee1.getInt("numero");
+                   if(numero<1){ 
                  psmtInsert.setInt(1,idLikes);
                  psmtInsert.setInt(2,val2);
                  psmtInsert.setInt(3,InicioSesion.pidU);
-                 psmtInsert.setInt(4,1);
-                 psmtInsert.executeUpdate();
+                 psmtInsert.setInt(4, 1);
+                 psmtInsert.executeUpdate();}
+                  else
+                      javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
+                 }
         
             }
         }
