@@ -27,6 +27,7 @@ public class InicioSesion extends javax.swing.JFrame {
     boolean correctPass;
     boolean accessGranted;
     public String nombreUsuario;
+    public static int pidU;
     
     public InicioSesion() {
         initComponents();
@@ -215,6 +216,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 ResultSet rs;
                 rs = psmt.executeQuery();
                 
+                pidU=idUsuario;                
                 
                 
                 if(rs.next())

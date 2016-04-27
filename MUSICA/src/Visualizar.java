@@ -22,7 +22,7 @@ public static int idcancion, idgenero, idartista, idTGC;
      */
     public static String nombreCancion;
     public Visualizar() {
-        initComponents();  
+        initComponents();         
     }
 
     
@@ -444,12 +444,13 @@ public static int idcancion, idgenero, idartista, idTGC;
                  System.out.println(val2);
                  int val3 = rs.getInt("idUsuario");
                  System.out.println(val3);
-                 
+
+                 System.out.println("User ID" +  InicioSesion.pidU);
                  int idLikes= val1+1;                 
                 
                  psmtInsert.setInt(1,idLikes);
                  psmtInsert.setInt(2,val2);
-                 psmtInsert.setInt(3,val3);
+                 psmtInsert.setInt(3,InicioSesion.pidU);
                  psmtInsert.setInt(4, -1);
                  psmtInsert.executeUpdate();
         
@@ -489,10 +490,13 @@ public static int idcancion, idgenero, idartista, idTGC;
                  int val3 = rs.getInt("idUsuario");
                  System.out.println(val3);
                  
+                 System.out.println("User Id" +  InicioSesion.pidU);
+
                  int idLikes= val1+1;                 
                 
+                 psmtInsert.setInt(1,idLikes);
                  psmtInsert.setInt(2,val2);
-                 psmtInsert.setInt(3,val3);
+                 psmtInsert.setInt(3,InicioSesion.pidU);
                  psmtInsert.setInt(4,1);
                  psmtInsert.executeUpdate();
         
