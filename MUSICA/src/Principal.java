@@ -1,8 +1,11 @@
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,6 +24,8 @@ public class Principal extends javax.swing.JFrame {
      */
     
     public String usuarioNombre ="";
+    
+    public static ImageIcon format = null;
     public Principal() {
         initComponents();
     }
@@ -155,6 +160,89 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static void recomendaciones()
+    {
+        try{
+              
+           Connection con = Conection.getConexion();
+            String query = "SELECT c.Nombre, t.imagen FROM tipogrupocanciones t JOIN cancion c ON c.fkidtipoGrupoCanciones = t.idtipoGrupoCanciones ORDER BY c.Calificacion ASC ";
+            PreparedStatement psmt = con.prepareStatement(query);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            String[] nomCancion = new String[3];
+            ArrayList<byte[]> images = new ArrayList<byte[]>();
+            for(int i = 0; i < 3; i++)
+            {
+               if(rs.next())
+                {
+                    nomCancion[i] = rs.getString("c.Nombre");
+                    images.add(rs.getBytes("t.imagen"));
+                }
+            }
+            
+            nomRecom1.setText(nomCancion[0]);
+            nomRecom2.setText(nomCancion[1]);
+            nomRecom3.setText(nomCancion[2]);
+            
+            format = new ImageIcon(images.get(0));
+            recom1.setIcon(format);
+            
+            format = new ImageIcon(images.get(1));
+            recom2.setIcon(format);
+            
+            format = new ImageIcon(images.get(2));
+            recom3.setIcon(format);
+            
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No existen valores");
+        } 
+    }
+    
+    public static void populares(){
+        try{
+              
+           Connection con = Conection.getConexion();
+            String query = "SELECT c.Nombre, t.imagen FROM tipogrupocanciones t JOIN cancion c ON c.fkidtipoGrupoCanciones = t.idtipoGrupoCanciones ORDER BY c.Calificacion DESC ";
+            PreparedStatement psmt = con.prepareStatement(query);
+            ResultSet rs;
+            rs = psmt.executeQuery();
+            
+            String[] nomCancion = new String[3];
+            ArrayList<byte[]> images = new ArrayList<byte[]>();
+            for(int i = 0; i < 3; i++)
+            {
+               if(rs.next())
+                {
+                    nomCancion[i] = rs.getString("c.Nombre");
+                    images.add(rs.getBytes("t.imagen"));
+                }
+            }
+            
+            nomPop1.setText(nomCancion[0]);
+            nomPop2.setText(nomCancion[1]);
+            nomPop3.setText(nomCancion[2]);
+            
+            format = new ImageIcon(images.get(0));
+            pop1.setIcon(format);
+            
+            format = new ImageIcon(images.get(1));
+            pop2.setIcon(format);
+            
+            format = new ImageIcon(images.get(2));
+            pop3.setIcon(format);
+            
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No existen valores");
+        } 
+     
+        
+    }
+    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -227,18 +315,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel nomPop1;
-    private javax.swing.JLabel nomPop2;
-    private javax.swing.JLabel nomPop3;
-    private javax.swing.JLabel nomRecom1;
-    private javax.swing.JLabel nomRecom2;
-    private javax.swing.JLabel nomRecom3;
-    private javax.swing.JLabel pop1;
-    private javax.swing.JLabel pop2;
-    private javax.swing.JLabel pop3;
-    private javax.swing.JLabel recom1;
-    private javax.swing.JLabel recom2;
-    private javax.swing.JLabel recom3;
+    public static javax.swing.JLabel nomPop1;
+    public static javax.swing.JLabel nomPop2;
+    public static javax.swing.JLabel nomPop3;
+    public static javax.swing.JLabel nomRecom1;
+    public static javax.swing.JLabel nomRecom2;
+    public static javax.swing.JLabel nomRecom3;
+    public static javax.swing.JLabel pop1;
+    public static javax.swing.JLabel pop2;
+    public static javax.swing.JLabel pop3;
+    public static javax.swing.JLabel recom1;
+    public static javax.swing.JLabel recom2;
+    public static javax.swing.JLabel recom3;
     private javax.swing.JTextField text_buscar;
     public static javax.swing.JLabel tuNombre;
     // End of variables declaration//GEN-END:variables

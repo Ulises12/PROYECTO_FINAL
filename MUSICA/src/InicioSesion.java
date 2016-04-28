@@ -250,6 +250,8 @@ public class InicioSesion extends javax.swing.JFrame {
                     newFrame.setVisible(true);
                     this.dispose();
                     Principal.tuNombre.setText(nombreUsuario);
+                    Principal.populares();
+                    Principal.recomendaciones();
                 }
                 else
                 {

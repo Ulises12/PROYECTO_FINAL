@@ -21,7 +21,7 @@ public class Conection{
     private static String ipAddress;
     private static String dbName ;
     private static final String user = "root";
-    private static final String password = "";
+    private static final String password = "root";
     private static final String CONN_STRING = "jdbc:mysql://localhost:3306/canciones";
 
     // método para poder realizar la conexion con la base de datos requerida
