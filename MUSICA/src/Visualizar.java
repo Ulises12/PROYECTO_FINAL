@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 
 
 /*
@@ -20,7 +21,14 @@ public static int idcancion, idgenero, idartista, idTGC;
     /**
      * Creates new form Visualizar
      */
+
     public static String nombreCancion;
+    
+    static ImageIcon format = null;
+    
+    public int idCancion = 0;
+    public static int idGeneroCancion = 0;
+    
     public Visualizar() {
         initComponents();         
     }
@@ -42,7 +50,7 @@ public static int idcancion, idgenero, idartista, idTGC;
      try{
               
            Connection con = Conection.getConexion();
-            String query = "SELECT c.Nombre as nombreCancion, c.Calificacion, c.link, gc.Nombre as nombreGenero, t.Nombre_tipo, t.año, t.imagen, a.Nombre as nombreArtista FROM cancion c JOIN generocancion gc ON c.fkidGeneroCancion = gc.idGeneroCancion JOIN tipogrupocanciones t ON c.fkidtipoGrupoCanciones = t.idtipoGrupoCanciones JOIN artista a ON a.idArtista = t.fkidArtista WHERE c.Nombre ='"+ nombreCancion + "'";
+            String query = "SELECT gc.idGeneroCancion, c.Nombre as nombreCancion, c.Calificacion, c.link, gc.Nombre as nombreGenero, t.Nombre_tipo, t.año, t.imagen, a.Nombre as nombreArtista, t.imagen FROM cancion c JOIN generocancion gc ON c.fkidGeneroCancion = gc.idGeneroCancion JOIN tipogrupocanciones t ON c.fkidtipoGrupoCanciones = t.idtipoGrupoCanciones JOIN artista a ON a.idArtista = t.fkidArtista WHERE c.Nombre ='"+ nombreCancion + "'";
             PreparedStatement psmt = con.prepareStatement(query);
             ResultSet rs;
             rs = psmt.executeQuery();
@@ -56,7 +64,10 @@ public static int idcancion, idgenero, idartista, idTGC;
              tipoi= rs.getString("t.Nombre_tipo");
              artistai= rs.getString("nombreArtista");
              anioi=rs.getInt("t.año");
-             imgi=rs.getString("t.imagen");
+             idGeneroCancion = rs.getInt("gc.idGeneroCancion");
+             byte[]imagedata = rs.getBytes("t.imagen");
+             format = new ImageIcon(imagedata);
+             image.setIcon(format);
              
             
             cancion.setText(nombrei);
@@ -67,9 +78,6 @@ public static int idcancion, idgenero, idartista, idTGC;
             anio.setText(String.valueOf(anioi));
             img.setText(imgi);
             tipo.setText(tipoi);
-            
-            
-            
             }
         }
      catch (SQLException ex){
@@ -150,6 +158,21 @@ public static int idcancion, idgenero, idartista, idTGC;
             System.out.println("No existen valores artista");
         } 
         
+        try{
+            
+                Connection con = Conection.getConexion();
+                String query = "INSERT INTO Preferencia(fkidGeneroCancion) VALUES (?)";
+                
+                PreparedStatement psmt = con.prepareStatement(query);
+                psmt.setInt(1, idGeneroCancion);
+                
+                psmt.execute();
+                System.out.println("sql success");
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,7 +205,7 @@ public static int idcancion, idgenero, idartista, idTGC;
         anio = new javax.swing.JLabel();
         tipo = new javax.swing.JLabel();
         img = new javax.swing.JLabel();
-        ImgLabel = new javax.swing.JLabel();
+        image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,8 +302,7 @@ public static int idcancion, idgenero, idartista, idTGC;
         img.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         img.setText("-");
 
-        ImgLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        ImgLabel.setText("Imagen");
+        image.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,11 +316,43 @@ public static int idcancion, idgenero, idartista, idTGC;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)))
-                .addContainerGap(123, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(150, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addGap(39, 39, 39)
+                                .addComponent(jButton1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(AnioLable)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(TipoLabel)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(LinkLabel)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(link, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(13, 13, 13)))
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11)
@@ -313,6 +367,9 @@ public static int idcancion, idgenero, idartista, idTGC;
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
                                 .addComponent(cancion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel12)
@@ -321,38 +378,8 @@ public static int idcancion, idgenero, idartista, idTGC;
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addGap(18, 18, 18)
-                                    .addComponent(artista, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(AnioLable)
-                                .addGap(18, 18, 18)
-                                .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(TipoLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(LinkLabel)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(link, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(ImgLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(39, 39, 39)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)))))
-                .addGap(31, 31, 31))
+                                    .addComponent(artista, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,35 +396,38 @@ public static int idcancion, idgenero, idartista, idTGC;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(artista, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(calif))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LinkLabel)
-                    .addComponent(link, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AnioLable)
-                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TipoLabel)
-                    .addComponent(tipo))
-                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(calif))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LinkLabel)
+                            .addComponent(link, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AnioLable)
+                            .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TipoLabel)
+                            .addComponent(tipo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ImgLabel)
-                            .addComponent(img))
+                        .addComponent(img)
                         .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -418,72 +448,14 @@ public static int idcancion, idgenero, idartista, idTGC;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+
         // TODO add your handling code here:
         try{              
             Connection con = Conection.getConexion();
             
             String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
             String sentenciaInsert= "Insert into likes values(?,?,?,?)";
-            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";
-            
-            PreparedStatement psmt = con.prepareStatement(query); 
-            PreparedStatement psmtMax= con.prepareStatement(queryMax);            
-            PreparedStatement psmtInsert= con.prepareStatement(sentenciaInsert);
-   
-            ResultSet rs;               
-            ResultSet rsMax;
-            
-            rs = psmt.executeQuery();  
-            rsMax= psmtMax.executeQuery();
-            
-            if(rs.next() && rsMax.next())
-            {
-                 int val1 = rsMax.getInt("MaxLikes");
-                 System.out.println(val1);
-                 int val2 = rs.getInt("idCancion");
-                 System.out.println(val2);
-                 int val3 = rs.getInt("idUsuario");
-                 System.out.println(val3);
-
-                 System.out.println("User ID" +  InicioSesion.pidU);
-                 int idLikes= val1+1;                 
-                
-                 String queryNoLike = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
-                 PreparedStatement psmtNoLike= con.prepareStatement(queryNoLike);
-                 ResultSet NoLikee;
-                 NoLikee= psmtNoLike.executeQuery();
-                 
-                 
-                 if(NoLikee.next())
-                 {
-                     int numero=NoLikee.getInt("numero");
-                   if(numero<1){ 
-                 psmtInsert.setInt(1,idLikes);
-                 psmtInsert.setInt(2,val2);
-                 psmtInsert.setInt(3,InicioSesion.pidU);
-                 psmtInsert.setInt(4, -1);
-                 psmtInsert.executeUpdate();}
-                  else
-                      javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
-                 }
-                 
-                
-            }
-        }
-     catch (SQLException ex){
-            System.out.println(ex.getMessage());
-            System.out.println("No se puede");
-        } 
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-        try{              
-            Connection con = Conection.getConexion();
-            
-            String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
-            String sentenciaInsert= "Insert into likes values(?,?,?,?)";
-            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";
+            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";           
             
             PreparedStatement psmt = con.prepareStatement(query); 
             PreparedStatement psmtMax= con.prepareStatement(queryMax);            
@@ -507,19 +479,114 @@ public static int idcancion, idgenero, idartista, idTGC;
                  System.out.println("User Id" +  InicioSesion.pidU);
 
                  int idLikes= val1+1;                 
-                   String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
+                 
+                 //SACA EL PROMEDIO
+                 String queryProm="SELECT sum(valor)*5/count(valor) AS Promedio FROM likes WHERE fkidCancion = '" + val2 + "' GROUP BY fkidcancion";
+                 PreparedStatement psmtProm = con.prepareStatement(queryProm);
+                 ResultSet prom;
+                 prom = psmtProm.executeQuery();                                 
+                 
+                 String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
                  PreparedStatement psmtNoLike1= con.prepareStatement(queryNoLike1);
-                 ResultSet NoLikee1;
+                 ResultSet NoLikee1;                 
                  NoLikee1= psmtNoLike1.executeQuery();
-                 if(NoLikee1.next())
-                 {
+                 
+                 if(NoLikee1.next() && prom.next())
+                 {                                                      
                      int numero=NoLikee1.getInt("numero");
-                   if(numero<1){ 
-                 psmtInsert.setInt(1,idLikes);
-                 psmtInsert.setInt(2,val2);
-                 psmtInsert.setInt(3,InicioSesion.pidU);
-                 psmtInsert.setInt(4, 1);
-                 psmtInsert.executeUpdate();}
+                   if(numero<1){                  
+                       psmtInsert.setInt(1,idLikes);                 
+                       psmtInsert.setInt(2,val2);
+                       psmtInsert.setInt(3,InicioSesion.pidU);
+                       psmtInsert.setInt(4, -1);
+                       psmtInsert.executeUpdate();
+                       
+                       int promedio = prom.getInt("Promedio");                 
+                     System.out.println("Promedio" + promedio);
+                 
+                     //INGRESA EL VALOR A CALIFICACION                 
+                     String queryCalif= "UPDATE cancion SET Calificacion ='" + promedio + "'  WHERE idcancion = '" + val2 + "' ";
+                     PreparedStatement psmtCalif = con.prepareStatement(queryCalif);
+                     psmtCalif.executeUpdate();     
+                   }
+                   
+                  else
+                      javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
+                 }
+        
+    
+            }
+        }
+     catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No se puede");
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        try{              
+            Connection con = Conection.getConexion();
+            
+            String query ="SELECT  l.fkidCancion as idCancion, l.fkidUsuario as idUsuario FROM likes l , cancion c WHERE l.fkidCancion=c.idCancion AND c.Nombre='" + nombreCancion + "'";
+            String sentenciaInsert= "Insert into likes values(?,?,?,?)";
+            String queryMax="SELECT Max(idLikes) as MaxLikes FROM likes";           
+            
+            PreparedStatement psmt = con.prepareStatement(query); 
+            PreparedStatement psmtMax= con.prepareStatement(queryMax);            
+            PreparedStatement psmtInsert= con.prepareStatement(sentenciaInsert);
+   
+            ResultSet rs;               
+            ResultSet rsMax;
+            
+            rs = psmt.executeQuery();  
+            rsMax= psmtMax.executeQuery();
+            
+            if(rs.next() && rsMax.next())
+            {
+                
+                 int val1 = rsMax.getInt("MaxLikes");
+                 System.out.println(val1);
+                 int val2 = rs.getInt("idCancion");
+                 idCancion = val2;
+                 System.out.println(val2);
+                 int val3 = rs.getInt("idUsuario");
+                 System.out.println(val3);
+                 
+                 System.out.println("User Id" +  InicioSesion.pidU);
+                 
+                 int idLikes= val1+1;                 
+                 
+                 //SACA EL PROMEDIO
+                 String queryProm="SELECT sum(valor)*5/count(valor) AS Promedio FROM likes WHERE fkidCancion = '" + val2 + "' GROUP BY fkidcancion";
+                 PreparedStatement psmtProm = con.prepareStatement(queryProm);
+                 ResultSet prom;
+                 prom = psmtProm.executeQuery();                                 
+                 
+                 String queryNoLike1 = "SELECT COUNT(fkidCancion) as numero, U.idUsuario FROM likes l, cancion c, usuario U WHERE c.idCancion= l.fkidCancion AND U.idUsuario=l.fkidUsuario AND c.idCancion='"+ val2 +"' AND U.idUsuario='"+ InicioSesion.pidU +"'";
+                 PreparedStatement psmtNoLike1= con.prepareStatement(queryNoLike1);
+                 ResultSet NoLikee1;                 
+                 NoLikee1= psmtNoLike1.executeQuery();
+
+                 
+                 if(NoLikee1.next() && prom.next())
+                 {                 
+                     int promedio = prom.getInt("Promedio");                 
+                     System.out.println("Promedio" + promedio);
+                 
+                     //INGRESA EL VALOR A CALIFICACION                 
+                     String queryCalif= "UPDATE cancion SET Calificacion ='" + promedio + "'  WHERE idcancion = '" + val2 + "' ";
+                     PreparedStatement psmtCalif = con.prepareStatement(queryCalif);
+                     psmtCalif.executeUpdate();                     
+
+                     int numero=NoLikee1.getInt("numero");
+                   if(numero<1){                  
+                       psmtInsert.setInt(1,idLikes);                 
+                       psmtInsert.setInt(2,val2);
+                       psmtInsert.setInt(3,InicioSesion.pidU);
+                       psmtInsert.setInt(4, 1);
+                       psmtInsert.executeUpdate();
+                   }
                   else
                       javax.swing.JOptionPane. showMessageDialog (this, "No se puede calificar la misma canción dos vecez");
                  }
@@ -530,6 +597,22 @@ public static int idcancion, idgenero, idartista, idTGC;
             System.out.println(ex.getMessage());
             System.out.println("No se puede");
         } 
+        
+        
+        try{
+            
+                Connection con = Conection.getConexion();
+                String query = "INSERT INTO Preferencia(fkidGeneroCancion) VALUES (?)";
+                
+                PreparedStatement psmt = con.prepareStatement(query);
+                psmt.setInt(1, idGeneroCancion);
+                
+                psmt.execute();
+                System.out.println("sql success");
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        
         
                        
     }//GEN-LAST:event_jButton12ActionPerformed
@@ -582,7 +665,6 @@ public static int idcancion, idgenero, idartista, idTGC;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnioLable;
-    private javax.swing.JLabel ImgLabel;
     private javax.swing.JLabel LinkLabel;
     private javax.swing.JLabel TipoLabel;
     public static javax.swing.JLabel anio;
@@ -590,6 +672,7 @@ public static int idcancion, idgenero, idartista, idTGC;
     public static javax.swing.JLabel calif;
     public static javax.swing.JLabel cancion;
     public static javax.swing.JLabel genero;
+    public static javax.swing.JLabel image;
     public static javax.swing.JLabel img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
