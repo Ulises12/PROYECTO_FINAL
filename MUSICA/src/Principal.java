@@ -60,7 +60,6 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(0, 153, 153));
         setName("Principal"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(700, 650));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -135,22 +134,22 @@ public class Principal extends javax.swing.JFrame {
         nomPop3.setText("jLabel7");
         getContentPane().add(nomPop3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, -1, -1));
 
-        recom3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
+        recom3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(recom3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 120, 110));
 
-        pop3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
+        pop3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(pop3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 120, 110));
 
-        recom2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
+        recom2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(recom2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 120, 110));
 
-        recom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
+        recom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(recom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 120, 110));
 
-        pop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
+        pop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(pop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 120, 110));
 
-        pop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Adele_Masmaspequeña.jpg"))); // NOI18N
+        pop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagine_DragonsPequeña.jpg"))); // NOI18N
         getContentPane().add(pop2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 120, 110));
 
         pack();

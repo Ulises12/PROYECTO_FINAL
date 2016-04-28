@@ -490,6 +490,7 @@ public static int idcancion, idgenero, idartista, idTGC;
                  PreparedStatement psmtNoLike1= con.prepareStatement(queryNoLike1);
                  ResultSet NoLikee1;                 
                  NoLikee1= psmtNoLike1.executeQuery();
+
                  
                  if(NoLikee1.next() && prom.next())
                  {                                                      
@@ -503,7 +504,7 @@ public static int idcancion, idgenero, idartista, idTGC;
                        
                        int promedio = prom.getInt("Promedio");                 
                      System.out.println("Promedio" + promedio);
-                 
+
                      //INGRESA EL VALOR A CALIFICACION                 
                      String queryCalif= "UPDATE cancion SET Calificacion ='" + promedio + "'  WHERE idcancion = '" + val2 + "' ";
                      PreparedStatement psmtCalif = con.prepareStatement(queryCalif);
@@ -568,7 +569,6 @@ public static int idcancion, idgenero, idartista, idTGC;
                  ResultSet NoLikee1;                 
                  NoLikee1= psmtNoLike1.executeQuery();
 
-                 
                  if(NoLikee1.next() && prom.next())
                  {                 
                      int promedio = prom.getInt("Promedio");                 
